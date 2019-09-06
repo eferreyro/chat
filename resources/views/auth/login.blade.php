@@ -55,7 +55,7 @@
             </b-form-group>
                   
                   
-                            <b-button type="submit" href="#" variant="primary">Go Login</b-button>
+                            <b-button type="submit" variant="primary">Go Login</b-button>
                             <b-button  href="{{ route('password.request') }}" variant="link"> Olvide mi clave</b-button>
  
                     

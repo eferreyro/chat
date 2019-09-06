@@ -13,6 +13,10 @@
     <!-- Styles -->
 </head>
 <body>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+        </form>
+
     <div id="app">
             <b-navbar toggleable="lg" type="dark" variant="dark">
                 <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -27,8 +31,10 @@
                                 <b-nav-item href="{{ route('register') }}">Registrar</b-nav-item>
                             @else
                                     <!-- Navbar dropdowns -->
-                                <b-nav-item-dropdown text="Username" right>
-                                <b-dropdown-item href="#">Logout</b-dropdown-item>    
+                        <b-nav-item-dropdown text="{{ auth()->user()->name }}" right>
+                                <b-dropdown-item href="#" @click="logout">
+                                    Logout
+                                    </b-dropdown-item>    
                                 </b-nav-item-dropdown>
                             @endguest
                     </b-collapse>
