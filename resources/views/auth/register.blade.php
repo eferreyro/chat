@@ -52,9 +52,12 @@
                     id="password_confirmation" name="password_confirmation"
                     required 
                     placeholder="********">
-            </b-form-input>
-        </b-form-group>
-            
+                </b-form-input>
+            </b-form-group>
+
+            <b-button type="submit" variant="primary">Registrar</b-button>
+            <b-button  href="{{ route('login') }}" variant="link"> Ya estoy registrado</b-button>
+
             </b-col>
         </b-row>
 </b-container>
