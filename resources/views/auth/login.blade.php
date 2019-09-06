@@ -1,70 +1,72 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-
-                <div class="panel-body">
-                    <b-alert show>Para acceder debes estar registrado</b-alert>
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+<b-container>
+    <b-row align-h="center">
+        <b-col cols="8">
+            <b-card-group deck>
+                <b-card header="Ingreso al Chat"
+                    footer="By eferreyro"
+                    title="LOGIN"
+                    >
+                    <b-alert show>
+                        por favor ingresa tus datos:
+                    </b-alert>
+            
+                <b-form  method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                    <b-form-group
+                        label="Nombre de Usuario"
+                        label-for="email"
+                        description="La suplantacion de identidad es un tema delicado, dejalo para los ignorantes."
+                    >
+                    <b-form-input
+                        id="email"
+                        name="email"
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                        type="email"
+                        placeholder="Ingresa tu Usuario"
+                        value="{{ old('email') }}" 
+                        required
+                        autofocus
+                    ></b-form-input>
+                    </b-form-group>
+                    <b-form-group
+                   
+                    label="Contraseña"
+                    label-for="password"
+                    
+                >
+                    <b-form-input
+                    id="password"
+                    name="password"
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                    type="password"
+                    placeholder="*******"
+                    value="{{ old('password') }}" 
+                    required
+                ></b-form-input>
+                    </b-form-group>
+                <b-form-checkbox name="remember" {{ old('remember') ? 'checked="true"' : '' }}>
+                Mantener mi sesion iniciada
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+              </b-form-checkbox>
+            </b-form-group>
+                  
+                  
+                            <b-button type="submit" href="#" variant="primary">Go Login</b-button>
+                            <b-button  href="{{ route('password.request') }}" variant="link"> Olvide mi clave</b-button>
+ 
+                    
+                </b-form>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
 
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+            </b-card>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+        </b-col>
+    </b-row>
+</b-container>
 @endsection
