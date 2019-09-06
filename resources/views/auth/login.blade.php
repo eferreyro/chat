@@ -8,6 +8,7 @@
                 <b-card header="Ingreso al Chat"
                     footer="By eferreyro"
                     title="LOGIN"
+                    class="my-3"
                     >
                     <b-alert show>
                         por favor ingresa tus datos:
